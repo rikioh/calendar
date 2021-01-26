@@ -26,18 +26,15 @@ for (i=0;i<hours;i++){
     timeRow.attr("id", "timeRow");
     hourCol.addClass("col-md-2")
     hourCol.attr("id", "hourCol")
-    hourCol.attr("style", "border-top: 1px dashed #000")
     infoCol.addClass("col-md-7 form-group")
     infoCol.attr("id", "infoCol");
     saveCol.addClass("col-md-1")
     saveCol.attr("id", "saveCol")
-    saveCol.attr("style", "border-top: 1px dashed #000")
     // add ID and style to timeText
     timeText.attr("id", "timeText")
     timeText.attr("style", "text-align: right")
-    // add class and style to text area form
+    // add class to text area form
     textArea.addClass("form-control")
-    textArea.attr("style", "background-color: #90EE90;")
     // add class/generic id to save button
     saveButton.addClass("btn btn-primary")
     saveButton.attr("id", "saveButton")
