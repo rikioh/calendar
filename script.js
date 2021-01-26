@@ -26,10 +26,12 @@ for (i=0;i<hours;i++){
     timeRow.attr("id", "timeRow");
     hourCol.addClass("col-md-2")
     hourCol.attr("id", "hourCol")
+    hourCol.attr("style", "border-top: 1px dashed #000")
     infoCol.addClass("col-md-7 form-group")
     infoCol.attr("id", "infoCol");
     saveCol.addClass("col-md-1")
     saveCol.attr("id", "saveCol")
+    saveCol.attr("style", "border-top: 1px dashed #000")
     // add ID and style to timeText
     timeText.attr("id", "timeText")
     timeText.attr("style", "text-align: right")
@@ -39,6 +41,7 @@ for (i=0;i<hours;i++){
     // add class/generic id to save button
     saveButton.addClass("btn btn-primary")
     saveButton.attr("id", "saveButton")
+    saveButton.attr("style", "position:relative; top:12px; right:10px")
     // append row to main div
     $("#calendarRows").append(timeRow)
     // append columns to time Row div
@@ -67,13 +70,26 @@ for (i=0;i<hours;i++){
     btnVal++
 }
 
+// input saved calendar values into the respective forms on page reload/revisit
+for (i=0;i<hours;i++){
+    // if there is no saved value in local storage continue on
+    if (!JSON.parse(localStorage.getItem(stringTime[i]))){
+        continue;
+    }
+    else{
+        // create new variable and set it to the local storage variable = stringTime[i]
+        var savedItems = JSON.parse(localStorage.getItem(stringTime[i]))
+        // set the value for each textarea element = the local storage saved item
+        $( "textarea" ).eq(i).val(savedItems)
+    }
+}
+
+
 $(".btn-primary").on("click", function() {
     // create variable equal to button value. 
     var matchVal = $(this).attr("value")
     // create variable equal to stringTime array index item of matchVal. This turns matchVal into the full time.
     var stringVal = stringTime[matchVal]
-    
-    // console.log($("textarea").eq(matchVal).val())
     // set local storage to the item in the corresponding text area for the button
     localStorage.setItem(stringVal,JSON.stringify($( "textarea" ).eq(matchVal).val()));
 
