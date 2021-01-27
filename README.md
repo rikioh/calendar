@@ -2,10 +2,9 @@
 
 **Name**: Rikio's daily calendar
 
-Description and usage: 
+Description and usage: This daily calendar is for an individuals single day event management. The calendar accounts for a work day's worth of hours between 8AM-6PM. This calendar is used by typing in data in the respective hour's text field. Once you have filled out the information you want to save, you press the adjacent save button to the right of the information field. Any hour that has passed will be grayed out but will still be accessible. The current hour is highlighted green and future hours are highlighted in blue. This site will save your data locally and will be populated with your previously saved data the next time you visit the website if it is during the same day. This website is refreshed and your locally saved data will be wiped every day at midnight PST.
 
-<!-- need to add this still -->
-**Visuals**: ![Expected output](./Assets/example.jpg "Expected output and user interaction") This image shows the example of ...
+**Visuals**: ![Expected output](./Assets/example.jpg "Expected output and user interaction") This image shows the example of the calendar in use.
 
 **Technologies used**: HTML, Javascript, CSS, JQuery
 

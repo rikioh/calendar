@@ -9,18 +9,14 @@ var btnVal = 0
 var now = dayjs().$d
 var nowHour = dayjs().$H
 
-console.log(dayjs())
-
 // stores variable for previous web load day of month
 var olddayofMonth = JSON.parse(localStorage.getItem("dayofMonth"))
-console.log(olddayofMonth)
 
 // stores variable for current day of month
 var dayofMonth = dayjs().$D
 
 // sets localstorage item for the current day of the month
 localStorage.setItem("dayofMonth",JSON.stringify(dayofMonth))
-console.log(dayofMonth)
 
 // show date and time in top div section
 $("#dateTime").text(now)
