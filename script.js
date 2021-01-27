@@ -1,13 +1,24 @@
 // global variables
 // variable for total hours in a day
-var hours = 24
+var hours = 11
 // variable to add hour id's to form fields
-var stringTime = ["12 AM","1 AM","2 AM","3 AM","4 AM","5 AM","6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM","7 PM","8 PM","9 PM","10 PM","11 PM"]
+var stringTime = ["8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM"]
 // variable to add id's to save buttons
 var btnVal = 0
 // date/Time variable
 var now = dayjs().$d
 var nowHour = dayjs().$H
+
+// stores variable for previous web load day of month
+var olddayofMonth = JSON.parse(localStorage.getItem("dayofMonth"))
+console.log(olddayofMonth)
+
+// stores variable for current day of month
+var dayofMonth = dayjs().$D
+
+// sets localstorage item for the current day of the month
+localStorage.setItem("dayofMonth",JSON.stringify(dayofMonth))
+console.log(dayofMonth)
 
 // show date and time in top div section
 $("#dateTime").text(now)
@@ -73,11 +84,13 @@ for (i=0;i<hours;i++){
 
 // if statement to run and change row color
 for (i=0;i<hours;i++){
+    // create variable to account for the day starting at 8 AM
+    var eightAM = (i+8)
     // if there is no saved value in local storage continue on
-    if (i<nowHour){
+    if (eightAM<nowHour){
         $( "textarea" ).eq(i).attr("style", "background-color: #595959")
     }
-    else if(i==nowHour){
+    else if(eightAM==nowHour){
         $( "textarea" ).eq(i).attr("style", "background-color: green")
     }
     else{
@@ -96,6 +109,17 @@ for (i=0;i<hours;i++){
         var savedItems = JSON.parse(localStorage.getItem(stringTime[i]))
         // set the value for each textarea element = the local storage saved item
         $( "textarea" ).eq(i).val(savedItems)
+    }
+}
+
+// if the day changes, clear all text fields and remove localstorage items for calendar
+for (i=0;i<hours;i++){
+    if (dayofMonth!=olddayofMonth && olddayofMonth!=null){
+        $( "textarea" ).eq(i).val("")
+        localStorage.removeItem(stringTime[i]);
+    }
+    else{
+        continue;
     }
 }
 
