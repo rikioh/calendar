@@ -1,0 +1,29 @@
+body{
+    background-color:	#141d26;
+}
+h1{
+    color:antiquewhite;
+    text-align: center
+}
+h4{
+    color:antiquewhite;
+    text-align: right
+}
+p{
+    color:antiquewhite;
+    text-align: center
+}
+.form-control{
+    background-color:#000099;
+    color:antiquewhite
+}
+.btn-primary{
+    background-color: #800060;
+    color: antiquewhite;
+}
+.col-md-1{
+    border-top: 1px dashed antiquewhite
+}
+.col-md-2{
+    border-top: 1px dashed antiquewhite
+}

@@ -7,29 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Luxon -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
     <title>Calendar</title>
-    <style>
-        body{
-            background-color:	#141d26;
-        }
-        h4{
-            color:antiquewhite
-        }
-        .form-control{
-            background-color:#000099;
-            color:antiquewhite
-        }
-        .btn-primary{
-            background-color: #800060;
-            color: antiquewhite;
-        }
-        .col-md-1{
-            border-top: 1px dashed antiquewhite
-        }
-        .col-md-2{
-            border-top: 1px dashed antiquewhite
-        }
-    </style>
+    <link rel="stylesheet" href="./darkmode.css">
 </head>
 <body>
     <div class="container">
@@ -37,11 +19,14 @@
         <!-- 
         
          -->
-    <!-- Create HTML for 24 hour calendar -->
-        <!-- 
-            Each Div should have a static time item and an input field/to do field
-                Each of these input fields should highlight the current hour in the JS, grey out past hours, highlight future items button
-         -->
+         <div>
+            <h1>Rikio's Calendar</h1>
+        </div>
+        <div>
+            <p>A simple calendar to allow you to add and save items on a single day basis by hour</p>
+            <p id="dateTime"></p>
+        </div>
+    <!-- Where the calendar will load -->
         <div id="calendarRows"></div>
          
     </div>

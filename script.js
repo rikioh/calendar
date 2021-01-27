@@ -4,8 +4,13 @@ var hours = 24
 // variable to add hour id's to form fields
 var stringTime = ["12 AM","1 AM","2 AM","3 AM","4 AM","5 AM","6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM","7 PM","8 PM","9 PM","10 PM","11 PM"]
 // variable to add id's to save buttons
-// var btnNum = ["0000","0100","0200","0300","0400","0500","0600","0700","0800","0900","1000","1100","1200","1300","1400","1500","1600","1700","1800","1900","2000","2100","2200","2300"]
 var btnVal = 0
+// date/Time variable
+var now = dayjs().$d
+var nowHour = dayjs().$H
+
+// show date and time in top div section
+$("#dateTime").text(now)
 
 // create 1 row for each hour for a total of 24 rows
 for (i=0;i<hours;i++){
@@ -30,9 +35,8 @@ for (i=0;i<hours;i++){
     infoCol.attr("id", "infoCol");
     saveCol.addClass("col-md-1")
     saveCol.attr("id", "saveCol")
-    // add ID and style to timeText
+    // add ID to timeText
     timeText.attr("id", "timeText")
-    timeText.attr("style", "text-align: right")
     // add class to text area form
     textArea.addClass("form-control")
     // add class/generic id to save button
@@ -67,6 +71,20 @@ for (i=0;i<hours;i++){
     btnVal++
 }
 
+// if statement to run and change row color
+for (i=0;i<hours;i++){
+    // if there is no saved value in local storage continue on
+    if (i<nowHour){
+        $( "textarea" ).eq(i).attr("style", "background-color: #595959")
+    }
+    else if(i==nowHour){
+        $( "textarea" ).eq(i).attr("style", "background-color: green")
+    }
+    else{
+        continue;
+    }
+}
+
 // input saved calendar values into the respective forms on page reload/revisit
 for (i=0;i<hours;i++){
     // if there is no saved value in local storage continue on
@@ -81,7 +99,7 @@ for (i=0;i<hours;i++){
     }
 }
 
-
+// saves text field to local storage on save button click
 $(".btn-primary").on("click", function() {
     // create variable equal to button value. 
     var matchVal = $(this).attr("value")
