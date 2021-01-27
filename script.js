@@ -9,6 +9,8 @@ var btnVal = 0
 var now = dayjs().$d
 var nowHour = dayjs().$H
 
+console.log(dayjs())
+
 // stores variable for previous web load day of month
 var olddayofMonth = JSON.parse(localStorage.getItem("dayofMonth"))
 console.log(olddayofMonth)
@@ -114,7 +116,7 @@ for (i=0;i<hours;i++){
 
 // if the day changes, clear all text fields and remove localstorage items for calendar
 for (i=0;i<hours;i++){
-    if (dayofMonth!=olddayofMonth && olddayofMonth!=null){
+    if (dayofMonth!=olddayofMonth && olddayofMonth){
         $( "textarea" ).eq(i).val("")
         localStorage.removeItem(stringTime[i]);
     }
